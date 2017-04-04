@@ -1,0 +1,29 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "0.1.0",
+	"tasks": [
+		{
+			"taskName": "build",
+			"isBuildCommand": true,
+			"command": "javac",
+			"args": [
+				"${cwd}/knapsack/Item.java",
+				"${cwd}/knapsack/Problem.java",
+				"${cwd}/knapsack/Solution.java",
+				"${cwd}/knapsack/Test.java",
+				"-d",
+				"bin"
+			]
+		},
+		{
+			"taskName": "run",
+			"command": "java",
+			"args": [
+				"-cp",
+				"bin",
+				"knapsack.Test"
+			]
+		}
+	]
+}
