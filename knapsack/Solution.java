@@ -5,7 +5,7 @@ package knapsack;
  * It is a knapsack which includes items selected to maximize the value.
  * Note that there may be more than one possible solution to each knapsack problem.
  * @author Sophie Quigley
- * @author PUT YOUR NAMES HERE
+ * @author Mitchell Mohorovich
  */
 public class Solution {
     /**
@@ -32,19 +32,19 @@ public class Solution {
      * </ul>
      */
     Item[] items;
-    
+
     /**
      * Returns a new Solution representing an empty knapsack
      * @param totalcapacity Capacity of knapsack when empty
      * @param totalitems Number of possible items which may be added to knapsack
      */
-    Solution ( int totalcapacity, int totalitems  ) {
+    Solution(int totalcapacity, int totalitems) {
         totalCapacity = totalcapacity;
         remainingCapacity = totalcapacity;
         this.maxItems = totalitems;
-        items = new Item[totalitems]; 
+        items = new Item[totalitems];
     }
-    
+
     /**
      * Returns a string describing the Solution to the knapsack Problem
      * @return String description of knapsack Solution
@@ -52,13 +52,13 @@ public class Solution {
     @Override
     public String toString() {
         String result = "Solution: knapsack of capacity " + totalCapacity + " contains:\n";
-        for (int i=0; i<maxItems; i++)
+        for (int i = 0; i < maxItems; i++)
             if (items[i] != null)
-                result += "- " + items[i]+"\n";
+                result += "- " + items[i] + "\n";
         result += "with a total value of " + getWorth();
         return result;
     }
-     
+
     /**
      * Adds the ith Item to the knapsack, and adjusts remaining capacity accordingly
      * @param i index of new Item to be added
@@ -71,7 +71,7 @@ public class Solution {
         totalItems++;
         return this;
     }
-    
+
     /**
      * Removes the ith Item from the knapsack, and adjusts remaining capacity accordingly
      * @param i index of new Item to be removed
@@ -92,14 +92,14 @@ public class Solution {
     public Item getItem(int i) {
         return items[i];
     }
-    
+
     /**
      * Getter for the total value of the current knapsack contents
      * @return the total value of the current contents of the knapsack
      */
     public int getWorth() {
         int result = 0;
-        for (int i=0; i<maxItems; i++)
+        for (int i = 0; i < maxItems; i++)
             if (items[i] != null)
                 result += items[i].getValue();
         return result;

@@ -1,4 +1,5 @@
 package knapsack;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ import java.util.Scanner;
   * @author Sophie Quigley
   */
 public class Item {
-    
+
     /**
      * Weight of item
      */
@@ -24,37 +25,38 @@ public class Item {
      * @param weight Weight of new Item
      * @param value  Value of new Item
      */
-    Item (int weight, int value) {
+    Item(int weight, int value) {
         this.weight = weight;
         this.value = value;
     }
+
     /**
      * Returns a new Item whose weight and value are read from the Scanner
      * @param in Scanner (standard input)
      */
-    Item (Scanner in) {
+    Item(Scanner in) {
         weight = in.nextInt();
-        while (weight <0){
+        while (weight < 0) {
             System.out.println("Error: weights cannot be negative");
-            weight = in.nextInt();            
+            weight = in.nextInt();
         }
         value = in.nextInt();
-        while (value <0){
+        while (value < 0) {
             System.out.println("Error: values cannot be negative");
-            value = in.nextInt();            
-        }        
+            value = in.nextInt();
+        }
     }
-    
+
     /**
      * Returns a new Item whose weight and value are randomly generated
      * @param rand Random number generator used in Item creation
      * @param maxvalue weight and value are between 1 and maxvalue+1
      */
-    Item (Random rand, int maxvalue) {
-        weight = rand.nextInt(maxvalue)+1;
-        value = rand.nextInt(maxvalue)+1;
+    Item(Random rand, int maxvalue) {
+        weight = rand.nextInt(maxvalue) + 1;
+        value = rand.nextInt(maxvalue) + 1;
     }
-    
+
     /**
      * Returns a string describing the Item
      * @return Description of Item
@@ -63,7 +65,7 @@ public class Item {
     public String toString() {
         return "item of weight " + weight + " and value " + value;
     }
-    
+
     /**
      * Getter for weight of Item
      * @return The Item's weight
@@ -71,7 +73,7 @@ public class Item {
     public int getWeight() {
         return weight;
     }
-    
+
     /**
      * Getter for value of Item
      * @return The Item's value 
