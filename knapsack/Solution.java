@@ -34,11 +34,17 @@ public class Solution {
     Item[] items;
 
     /**
+     * Running sum of the value of the solution.
+     */
+    int totalValue;
+
+    /**
      * Returns a new Solution representing an empty knapsack
      * @param totalcapacity Capacity of knapsack when empty
      * @param totalitems Number of possible items which may be added to knapsack
      */
     Solution(int totalcapacity, int totalitems) {
+        this.totalValue = 0;
         totalCapacity = totalcapacity;
         remainingCapacity = totalcapacity;
         this.maxItems = totalitems;
@@ -66,6 +72,7 @@ public class Solution {
      * @return The updated knapsack
      */
     public Solution add(int i, Item item) {
+        this.totalValue += item.value;
         items[i] = item;
         remainingCapacity -= item.getWeight();
         totalItems++;
@@ -78,6 +85,7 @@ public class Solution {
      * @return The updated knapsack
      */
     public Solution remove(int i) {
+        this.totalValue -= items[i].value;
         remainingCapacity += items[i].getWeight();
         items[i] = null;
         totalItems--;
@@ -98,10 +106,6 @@ public class Solution {
      * @return the total value of the current contents of the knapsack
      */
     public int getWorth() {
-        int result = 0;
-        for (int i = 0; i < maxItems; i++)
-            if (items[i] != null)
-                result += items[i].getValue();
-        return result;
+        return this.totalValue;
     }
 }
