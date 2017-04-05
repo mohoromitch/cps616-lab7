@@ -17,17 +17,11 @@ public class Test {
     public static void main(String[] args) {
         Problem problem;
 
-        for (int i = 10; i <= 200; i += 20) {
+        for (int i = 10; i <= 200; i += 10) {
             problem = new Problem(i, i);
             process(problem);
         }
 
-        Scanner in = new Scanner(System.in);
-        while (in.hasNext()) {
-            // Read and print input Kanpsack
-            problem = new Problem(in);
-            process(problem);
-        }
     }
 
     /**
@@ -37,12 +31,11 @@ public class Test {
      */
     private static void process(Problem problem) {
         Solution solution;
-        System.out.println(problem);
         long time = System.nanoTime();
         solution = problem.solve();
         time = System.nanoTime() - time;
-        System.out.println(solution);
-        System.out.println("was calculated in " + time + "nanoseconds.\n");
+        //System.out.printf("%5d: %d\n", solution.totalCapacity, time);
+		System.out.printf("%d\n", time);
     }
 
 }
