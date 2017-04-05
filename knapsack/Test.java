@@ -18,7 +18,7 @@ public class Test {
         Problem problem;
 
         for(int run = 1; run <= 3; run++) {
-        	System.out.printf("Starting run %d...\n\n", run);
+        	System.out.printf("Starting run %d...\n", run);
 			for (int i = 10; i <= 200; i += 10) {
 				problem = new Problem(i, i);
 				process(problem);
