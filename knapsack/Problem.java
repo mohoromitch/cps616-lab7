@@ -26,6 +26,11 @@ public class Problem {
      */
     Item[] items;
 
+	/**
+	 * The dynamic programming memory array.
+	 */
+	Solution[][] mfk;
+
     /**
      * 
      * Creates a new knapsack Problem whose parameters will be read from the Scanner.
@@ -112,8 +117,13 @@ public class Problem {
      * @return Solution for knapsack Problem
      */
     public Solution solve() {
+    	this.initMFK(capacity + 1, totalItems );
         return bestFit(capacity, totalItems - 1);
     }
+
+    private void initMFK(int capacity, int totalItems) {
+    	this.mfk = new Solution[capacity][totalItems];
+	}
 
     /**
      * Finds best combination of items 0 to n that fits in capacity
@@ -129,6 +139,11 @@ public class Problem {
             return result;
         }
 
+        //check mfk
+        if(mfk[capacity][n] != null) {
+        	return mfk[capacity][n].clone();
+		}
+
         int weightn = items[n].getWeight();
         if (weightn > capacity)
             return bestFit(capacity, n - 1);
@@ -136,10 +151,12 @@ public class Problem {
         Solution included = bestFit(capacity - weightn, n - 1).add(n, items[n]);
         Solution excluded = bestFit(capacity, n - 1);
 
-        if (excluded.getWorth() >= included.getWorth())
-            return excluded;
-        else
-            return included;
+        if (excluded.getWorth() >= included.getWorth()) {
+        	mfk[capacity][n] = excluded.clone();
+		} else {
+        	mfk[capacity][n] = included.clone();
+		}
+        return mfk[capacity][n];
     }
 
 }

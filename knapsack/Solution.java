@@ -76,7 +76,7 @@ public class Solution {
      * Removes the ith Item from the knapsack, and adjusts remaining capacity accordingly
      * @param i index of new Item to be removed
      * @return The updated knapsack
-     */
+ */
     public Solution remove(int i) {
         remainingCapacity += items[i].getWeight();
         items[i] = null;
@@ -104,4 +104,17 @@ public class Solution {
                 result += items[i].getValue();
         return result;
     }
+
+    public Solution clone() {
+		Solution solution = new Solution(this.totalCapacity, this.totalItems);
+		solution.totalCapacity = this.totalCapacity;
+		solution.remainingCapacity = this.remainingCapacity;
+		solution.maxItems = this.maxItems;
+		solution.totalItems = this.maxItems;
+		//the Item objects themselves aren't modified so a shallow copy is sufficient
+		solution.items = this.items.clone();
+		return solution;
+	}
+
+
 }
