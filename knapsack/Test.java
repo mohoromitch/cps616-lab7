@@ -39,7 +39,6 @@ public class Test {
         solution = problem.solve();
         time = System.nanoTime() - time;
         System.out.printf("cap: %5d, val: %5d, time: %10d\n", solution.totalCapacity, solution.getWorth(), time);
-		//System.out.printf("%d\n", time);
     }
 
 }
