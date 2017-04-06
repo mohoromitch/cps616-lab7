@@ -38,8 +38,8 @@ public class Test {
         long time = System.nanoTime();
         solution = problem.solve();
         time = System.nanoTime() - time;
-        //System.out.printf("%5d: %d\n", solution.totalCapacity, time);
-		System.out.printf("%d\n", time);
+        System.out.printf("cap: %5d val: %d %d\n", solution.totalCapacity, solution.getWorth(), time);
+		//System.out.printf("%d\n", time);
     }
 
 }
