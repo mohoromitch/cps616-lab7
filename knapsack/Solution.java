@@ -34,6 +34,11 @@ public class Solution {
     Item[] items;
 
     /**
+     *  Instance variable that dynamically keeps the total worth of the items.
+     */
+    int totalWorth;
+
+    /**
      * Returns a new Solution representing an empty knapsack
      * @param totalcapacity Capacity of knapsack when empty
      * @param totalitems Number of possible items which may be added to knapsack
@@ -66,6 +71,7 @@ public class Solution {
      * @return The updated knapsack
      */
     public Solution add(int i, Item item) {
+    	this.totalWorth += item.getValue();
         items[i] = item;
         remainingCapacity -= item.getWeight();
         totalItems++;
@@ -78,6 +84,7 @@ public class Solution {
      * @return The updated knapsack
  */
     public Solution remove(int i) {
+    	this.totalWorth -= items[i].getValue();
         remainingCapacity += items[i].getWeight();
         items[i] = null;
         totalItems--;
@@ -98,11 +105,7 @@ public class Solution {
      * @return the total value of the current contents of the knapsack
      */
     public int getWorth() {
-        int result = 0;
-        for (int i = 0; i < maxItems; i++)
-            if (items[i] != null)
-                result += items[i].getValue();
-        return result;
+    	return this.totalWorth;
     }
 
     public Solution clone() {
