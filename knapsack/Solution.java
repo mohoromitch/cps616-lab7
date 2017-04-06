@@ -44,6 +44,7 @@ public class Solution {
      * @param totalitems Number of possible items which may be added to knapsack
      */
     Solution(int totalcapacity, int totalitems) {
+    	this.totalWorth = 0;
         totalCapacity = totalcapacity;
         remainingCapacity = totalcapacity;
         this.maxItems = totalitems;
@@ -84,7 +85,7 @@ public class Solution {
      * @return The updated knapsack
  */
     public Solution remove(int i) {
-    	this.totalWorth -= items[i].getValue();
+    	this.totalWorth = this.totalWorth - items[i].getValue();
         remainingCapacity += items[i].getWeight();
         items[i] = null;
         totalItems--;
@@ -114,6 +115,7 @@ public class Solution {
 		solution.remainingCapacity = this.remainingCapacity;
 		solution.maxItems = this.maxItems;
 		solution.totalItems = this.maxItems;
+		solution.totalWorth = this.totalWorth;
 		//the Item objects themselves aren't modified so a shallow copy is sufficient
 		solution.items = this.items.clone();
 		return solution;
